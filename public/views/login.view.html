@@ -1,0 +1,179 @@
+<style>
+  :root {
+    --grad-color: linear-gradient(
+      148deg,
+      rgba(154, 209, 111, 1) 2%,
+      rgba(154, 209, 111, 1) 31%,
+      rgba(87, 199, 133, 1) 51%,
+      rgba(42, 123, 155, 1) 100%
+    );
+  }
+
+  #login-form-section {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  #login-form-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #6d6d6d;
+    z-index: -1;
+  }
+
+  .login-modal {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(12, 1fr);
+    background: #f0f0f0;
+    width: 25%;
+    height: 62%;
+    border-radius: 8px;
+    animation: fadeIn 0.6s ease-in-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  *.grid-cell {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+
+  .login-modal-top {
+    grid-area: 1/1/4/2;
+  }
+  .login-modal-top h1 {
+    font-size: 3.2vw;
+    background-image: var(--grad-color);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .login-modal-body {
+    grid-area: 4/1/10/2;
+  }
+  .login-modal-body form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .login-modal-body form fieldset {
+    width: 20vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    margin: 4% 0;
+    background: #fff;
+  }
+  .login-modal-body form legend {
+    font-size: 1.2vw;
+    font-weight: lighter;
+
+  }
+  .login-modal-body form fieldset input {
+    width: 150%;
+    height: 100%;
+    outline: none;
+    border: none;
+    background: none;
+  }
+
+  .login-modal-footer {
+    grid-area: 10/1/13/2;
+    text-align: center;
+    font-size: 0.9vw;
+  }
+  .login-modal-footer a {
+    color: #4d7058;
+    font-weight: bold;
+  }
+
+  .btn {
+    user-select: none;
+    background-image: var(--grad-color);
+    padding: 4% 15%;
+    text-align: center;
+    font-weight: bold;
+    transition: 0.3s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+  }
+  .btn:hover {
+    cursor: pointer;
+    background-position: right center;
+    padding: 4.5% 15.5%;
+    text-decoration: none;
+  }
+  .btn:active {
+    background-position: center left;
+    padding: 4% 15%;
+  }
+</style>
+<section id="login-form-section">
+  <div class="login-modal">
+    <div class="grid-cell login-modal-top">
+      <h1>Login</h1>
+    </div>
+    <div class="grid-cell login-modal-body">
+      <form id="login-form">
+        <fieldset>
+          <legend>Username</legend>
+          <input
+            type="text"
+            name="login-username-input"
+            id="login-username-input"
+            placeholder="Your username or email"
+          />
+        </fieldset>
+        <fieldset>
+          <legend>Password</legend>
+          <input
+            type="text"
+            name="login-password-input"
+            id="login-password-input"
+            placeholder="Your password"
+          />
+        </fieldset>
+      </form>
+    </div>
+    <div class="grid-cell login-modal-footer">
+      <div class="btn btn-submit btn-login">Login</div>
+      <div>
+        <small>
+          <p><a href="#/reset">Forgot password</a></p>
+          <p>
+            Do not have an account&quest;&nbsp;<a href="#/register"
+              >Register for free</a
+            >
+          </p>
+        </small>
+      </div>
+    </div>
+  </div>
+</section>
