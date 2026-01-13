@@ -11,10 +11,22 @@
     }
     #home-section h1{
         font-size: 4em;
+        transform: translateY(15%);
+        opacity: 0;
+        animation: fadein 0.6s ease-in-out forwards;
+    }
+
+    @keyframes fadein{
+        to{
+            transform: translateY(0%);
+            opacity: 1;
+        }
     }
     #home-section p{
         font-size: 2em;
     }
+
+
 </style>
 <section id="home-section">
     <h1>404 Not Found</h1>

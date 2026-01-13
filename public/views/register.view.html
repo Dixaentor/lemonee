@@ -133,6 +133,30 @@
     color: #4d7058;
     font-weight: bold;
   }
+
+  .not-ok{
+    border: 2px solid rgb(250, 161, 161);
+    animation: giggle 0.2s ease-in-out forwards;
+  }
+
+  @keyframes giggle {
+    0%{
+      transform: translateX(0%);
+    }
+    25%{
+      transform: translateX(5%);
+    }
+    50%{
+      transform: translateX(0%);
+    }
+    75%{
+      transform: translateX(-5%);
+    }
+    100%{
+      transform: translateX(0%);
+    }
+  }
+
 </style>
 <section id="register-form-section">
   <div class="register-modal">
@@ -153,9 +177,9 @@
         <fieldset>
           <legend>E-mail</legend>
           <input
-            type="text"
-            name="register-username-input"
-            id="register-username-input"
+            type="email"
+            name="register-email-input"
+            id="register-email-input"
             placeholder="Your email"
           />
         </fieldset>
@@ -172,8 +196,8 @@
           <legend>Confirm password</legend>
           <input
             type="text"
-            name="register-password-input"
-            id="register-password-input"
+            name="register-password-confirm-input"
+            id="register-password-confirm-input"
             placeholder="Confirm your password"
           />
         </fieldset>

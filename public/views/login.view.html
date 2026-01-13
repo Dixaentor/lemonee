@@ -134,6 +134,28 @@
     background-position: center left;
     padding: 4% 15%;
   }
+  .not-ok{
+    border: 2px solid rgb(250, 161, 161);
+    animation: giggle 0.2s ease-in-out forwards;
+  }
+
+  @keyframes giggle {
+    0%{
+      transform: translateX(0%);
+    }
+    25%{
+      transform: translateX(5%);
+    }
+    50%{
+      transform: translateX(0%);
+    }
+    75%{
+      transform: translateX(-5%);
+    }
+    100%{
+      transform: translateX(0%);
+    }
+  }
 </style>
 <section id="login-form-section">
   <div class="login-modal">
@@ -159,11 +181,14 @@
             id="login-password-input"
             placeholder="Your password"
           />
+          <span class="pass-icon">
+            <input type="checkbox" name="show-hidden" id="show-hidden" checked>
+          </span>
         </fieldset>
       </form>
     </div>
     <div class="grid-cell login-modal-footer">
-      <div class="btn btn-submit btn-login">Login</div>
+      <div class="btn btn-submit" id="btn-login">Login</div>
       <div>
         <small>
           <p><a href="#/reset">Forgot password</a></p>
