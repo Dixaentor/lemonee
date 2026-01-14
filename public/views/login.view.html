@@ -156,6 +156,14 @@
       transform: translateX(0%);
     }
   }
+
+  .pass-icon{
+    transition: 0.3s ease-in-out;
+  }
+  .pass-icon:hover{
+    cursor: pointer;
+    user-select: none;
+  }
 </style>
 <section id="login-form-section">
   <div class="login-modal">
@@ -176,13 +184,13 @@
         <fieldset>
           <legend>Password</legend>
           <input
-            type="text"
+            type="password"
             name="login-password-input"
             id="login-password-input"
             placeholder="Your password"
           />
           <span class="pass-icon">
-            <input type="checkbox" name="show-hidden" id="show-hidden" checked>
+            <small>show</small>
           </span>
         </fieldset>
       </form>

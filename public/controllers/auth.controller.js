@@ -1,12 +1,16 @@
 export function init() {
     console.log("auth controller loaded");
 
+    /**button */
     const btnRegister = document.getElementById("btn-register");
     const btnLogin = document.getElementById("btn-login");
     
+    /** login part */
     const loginUsernameInput = document.getElementById("login-username-input");
     const loginPasswordInput = document.getElementById("login-password-input");
+    const passIcon = document.querySelector(".pass-icon");
 
+    /**register part */
     const registerUsernameInput = document.getElementById("register-username-input");
     const registerEmailInput = document.getElementById("register-email-input");
     const registerPasswordInput = document.getElementById("register-password-input");
@@ -24,13 +28,28 @@ export function init() {
         loginPasswordInput
     ];
 
-    const usernameRegex =  /^[a-zA-Z0-9_-]{4,}$/;
+    const usernameRegex =  /^[a-zA-Z0-9_-]{4,}$|^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
     
-     function addLoader (color = '#FFF')
-        {return ` <style>.loader-container{ display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;} .loader{ width: 30px; height: 30px; animation: rotate 1s linear infinite;} .loader circle{ stroke: ${color}; stroke-width: 4; fill: none; stroke-dasharray: 100; stroke-dashoffset: 0; animation: dash 1.5s ease-in-out infinite;} @keyframes rotate{ 0%{ transform: rotate(0deg);} 100%{ transform: rotate(360deg);}} @keyframes dash{ 0%{ stroke-dashoffset: 100;} 50%{ stroke-dashoffset: 50;} 100%{ stroke-dashoffset: 100;}} </style><div class="loader-container"><svg class="loader" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" stroke="${color}" stroke-width="4" fill="none"></circle></svg></div>`;}
     
+    function addLoader (color = '#FFF')
+    {return ` <style>.loader-container{ display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;} .loader{ width: 30px; height: 30px; animation: rotate 1s linear infinite;} .loader circle{ stroke: ${color}; stroke-width: 4; fill: none; stroke-dasharray: 100; stroke-dashoffset: 0; animation: dash 1.5s ease-in-out infinite;} @keyframes rotate{ 0%{ transform: rotate(0deg);} 100%{ transform: rotate(360deg);}} @keyframes dash{ 0%{ stroke-dashoffset: 100;} 50%{ stroke-dashoffset: 50;} 100%{ stroke-dashoffset: 100;}} </style><div class="loader-container"><svg class="loader" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" stroke="${color}" stroke-width="4" fill="none"></circle></svg></div>`;}
+    
+     function togglePass(){
+        if (loginPasswordInput.type === 'password') {
+            loginPasswordInput.type = 'text';
+        } else {
+            loginPasswordInput.type = 'password';
+        }
+
+        const text = passIcon.children[0];
+        if (text.textContent === 'show') {
+            text.textContent = 'hide';
+        } else {
+            text.textContent = 'show';
+        }
+    }
     
     function isFormValid (inputList,classToCheck){
         let isValid = true;
@@ -135,7 +154,7 @@ export function init() {
 
             let registerFormValid = (isFormValid(registerInputList,'not-ok'));
             
-            //submitting data if form is valid
+            //submit data if form is valid
             if(registerFormValid){
                 console.log(userData);
                 cleanInput(registerInputList);
@@ -148,10 +167,12 @@ export function init() {
 
     btnRegister?.addEventListener("click", onRegisterClick);
     btnLogin?.addEventListener("click",onLoginClick);
-
+    passIcon?.addEventListener('click',togglePass);
+    
     return () => {
         btnLogin?.removeEventListener("click", onLoginClick);
         btnRegister?.removeEventListener("click",onRegisterClick);
+        passIcon?.addEventListener('click',togglePass);
         console.log("auth controller unloaded");
     };
 }
