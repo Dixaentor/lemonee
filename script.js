@@ -1,4 +1,4 @@
-import { loadController, render } from "./public/routes/router.js";
+import { loadController, render } from "./src/routes/router.js";
 
 async function load() {
   let content = await render();
