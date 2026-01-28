@@ -9,7 +9,7 @@ const viewRoutes = {
 
 export async function render() {
     let route = await laodPath();
-    const response = await fetch(`/public/views/${route.view}.view.html`);
+    const response = await fetch(`/src/views/${route.view}.view.html`);
     return response.text();
 }
 
@@ -28,7 +28,7 @@ export async function loadController() {
     }
     if (route.controller) {
         const module = await import(
-      `/public/controllers/${route.controller}.controller.js`
+      `/src/controllers/${route.controller}.controller.js`
     );
     if (typeof module.init === "function") {
       currentControllerCleanup = module.init();
